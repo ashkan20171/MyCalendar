@@ -1,0 +1,68 @@
+﻿Version=4
+IconFile=
+NumberOfModules=2
+Module1=AnotherDatePicker
+Module2=DateUtils
+Build1=Default,b4a.example
+DoNotOverwriteManifest=False
+ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: http://www.basic4ppc.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="4" android:targetSdkVersion="14"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~'End of default text.~\n~
+NumberOfFiles=2
+File1=1.bal
+File2=DatePicker.bal
+NumberOfLibraries=1
+Library1=core
+@EndOfDesignText@
+#Region  Project Attributes 
+	#ApplicationLabel: B4A Example
+	#VersionCode: 1
+	#VersionName: 
+	'SupportedOrientations possible values: unspecified, landscape or portrait.
+	#SupportedOrientations: unspecified
+	#CanInstallToExternalStorage: False
+#End Region
+
+#Region  Activity Attributes 
+	#FullScreen: False
+	#IncludeTitle: True
+#End Region
+
+Sub Process_Globals
+	'These global variables will be declared once when the application starts.
+	'These variables can be accessed from all modules.
+
+End Sub
+
+Sub Globals
+	Dim adp As AnotherDatePicker
+	Dim Label1 As Label
+	Dim btnPicker As Button
+End Sub
+
+Sub Activity_Create(FirstTime As Boolean)
+	Activity.LoadLayout("1")
+	adp.Initialize
+	adp.AddToActivity(Activity, Label1)
+End Sub
+
+Sub btnPicker_Click
+	adp.Show
+End Sub
+
+Sub Activity_KeyPress (KeyCode As Int) As Boolean
+	If KeyCode = KeyCodes.KEYCODE_BACK Then
+		If adp.IsVisible Then
+			adp.Hide
+			Return True
+		End If
+	End If
+	Return False
+End Sub
+
+Sub Activity_Resume
+
+End Sub
+	
+Sub Activity_Pause (UserClosed As Boolean)
+
+End Sub
+
